@@ -22,5 +22,5 @@ Terraform configuration files to provision an EKS cluster on AWS.
 4. `kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta8/aio/deploy/recommended.yaml` // Will schedule the resources necessary for the dashboard.
 5. `kubectl proxy` // Create a proxy server that will allow you to navigate to the dashboard from the browser on your local machine.
 6. `kubectl apply -f https://raw.githubusercontent.com/hashicorp/learn-terraform-provision-eks-cluster/main/kubernetes-dashboard-admin.rbac.yaml` // In another terminal (do not close the kubectl proxy process), create the ClusterRoleBinding resource.
-5. `kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep service-controller-token | awk '{print $1}')` // Then, generate the authorization token.
+5. `kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep service-controller-token | awk '{print $1}')` // Then, generate the authorization token. You should be able to access the Kubernetes dashboard here (http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/).
 6. `terraform destroy` // Clean up your workspace
